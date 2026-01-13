@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Susan Seyram Darke - Junior Web Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+            text-transform: capitalize;
+        }
+
+        nav a:hover {
+            color: #8B1538;
+        }
+
+        /* Home Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #000 0%, #1a0a0f 100%);
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8B1538, #ff6b9d);
+            padding: 5px;
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #000;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content h1 span {
+            color: #8B1538;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border: 2px solid #8B1538;
+            background: transparent;
+            color: #fff;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #8B1538;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(139, 21, 56, 0.3);
+        }
+
+        .btn.primary {
+            background: #8B1538;
+        }
+
+        .btn.primary:hover {
+            background: #a61b44;
+        }
+
+        .tech-icons {
+            margin-top: 3rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .tech-icons i {
+            font-size: 2.5rem;
+            color: #8B1538;
+        }
+
+        /* Section Styling */
+        section {
+            min-height: 100vh;
+            padding: 6rem 5% 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #8B1538;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: #0a0a0a;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #1a0a0f 0%, #2d1319 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #8B1538;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(139, 21, 56, 0.4);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #8B1538, #ff6b9d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #8B1538;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .project-content p {
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: #8B1538;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #ff6b9d;
+        }
+
+        /* Experience Section */
+        #experience {
+            background: #000;
+        }
+
+        .experience-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .experience-item {
+            background: linear-gradient(135deg, #1a0a0f 0%, #2d1319 100%);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #8B1538;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-icon {
+            width: 50px;
+            height: 50px;
+            background: #8B1538;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .experience-item h3 {
+            color: #8B1538;
+            font-size: 1.5rem;
+        }
+
+        .experience-item .company {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            list-style-position: inside;
+            color: #ccc;
+        }
+
+        .experience-item ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #0a0a0a;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            color: #ccc;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: #8B1538;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #8B1538;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #8B1538;
+            font-size: 2rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff6b9d;
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 2rem;
+            color: #888;
+            border-top: 1px solid #8B1538;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="profile-img">
+            <img src="Images/profile Susan.jpeg" alt="Susan Darke">
+        </div>
+        <div class="hero-content">
+            <h1>Passionate about technology and<br>enhancing each project with <span>innovative, creative solutions</span></h1>
+            <p>Hi there! I'm Susan Seyram Darke, an attentive Junior Web Developer with practical experience in web development and IT support. BSc. in Information Technology Management graduate with proven success in software development and platform management.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn primary">Get in Touch</a>
+                <a href="https://drive.google.com/file/d/10xZygACsZkPQlmDgeGeZuK898-usTULY/view?usp=sharing" class="btn" download>Download CV</a>
+            </div>
+        </div>
+        <div class="tech-icons">
+            <h3>EXPERTISE WITH</h3>
+            <!--<span style="font-size: 1.5rem; color: #8B1538;">💻</span>
+            <span style="font-size: 1.5rem; color: #8B1538;">🎨</span>
+            <span style="font-size: 1.5rem; color: #8B1538;">⚡</span>
+            <span style="font-size: 1.5rem; color: #8B1538;">🚀</span>-->
+            <img src="Images/wordpress-6942722_640.png" alt="Wordpress" style="width:40px; height:40px;">
+            <img src="Images/html logo.png" alt="Wordpress" style="width:40px; height:40px;">
+            <img src="Images/css logo.jpeg" alt="Wordpress" style="width:40px; height:40px;">
+            <img src="Images/javascriptlogo.webp" alt="Wordpress" style="width:40px; height:40px;">
+            <img src="Images/next logo.png" alt="Wordpress" style="width:40px; height:40px;">
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">Web Development</div>
+                <div class="project-content">
+                    <h3>Web Development projects</h3>
+                    <p>Crafting responsive, user-focused websites that blend clean design with powerful functionality..</p>
+                    <a href="qace.com.gh" class="project-link">View page →</a>
+                    <a href="qace-auto.com.gh" class="project-link">View page →</a>
+                    <a href="mabsandassociates.com" class="project-link">View page →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">Graphic Design</div>
+                <div class="project-content">
+                    <h3>Creativity through graphics</h3>
+                    <p>Crafting vibrant, professional designs that bring your vision to life with impact.</p>
+                    <a href="https://drive.google.com/open?id=123tcGDDF2AxbhiyEwNbobCfnLkP4RI7p&amp%3Busp=drive_copy&usp=drive_copy
+https://drive.google.com/open?id=1VOOpzfVXyRnlnUzycL2Rzzww9d7_-K5z&amp%3Busp=drive_copy&usp=drive_copy
+https://drive.google.com/open?id=1GNiO_VA8qyu23vYx8AG_GQ7cW5Ux1Qss&amp%3Busp=drive_copy&usp=drive_copy
+https://drive.google.com/open?id=1TTcmTtjTDgECO9fWHNL_k13zAOk1SfAr&amp%3Busp=drive_copy&usp=drive_copy" class="project-link">View Graphis →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">JS</div>
+                <div class="project-content">
+                    <h3>JavaScript Dynamics</h3>
+                    <p>Interactive JavaScript projects showcasing DOM manipulation, event handling, and modern ES6+ features for dynamic web applications.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">⚛️</div>
+                <div class="project-content">
+                    <h3>React Applications</h3>
+                    <p>Full-stack React applications with Next.js, demonstrating component architecture, state management, and modern frontend development practices.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company-icon">🚀</div>
+                    <div>
+                        <h3>Junior Software Engineer</h3>
+                        <p class="company">QACE COMPANY LIMITED</p>
+                    </div>
+                </div>
+                <p class="date">July 2025 - Present</p>
+                <ul>
+                    <li>Develop and maintain company websites using modern frameworks</li>
+                    <li>Assist senior developers in software development projects</li>
+                    <li>Managing social media accounts of the company</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company-icon">🏛️</div>
+                    <div>
+                        <h3>IT Support Specialist</h3>
+                        <p class="company">Non-Formal Division - Ashaiman Municipal Assembly</p>
+                    </div>
+                </div>
+                <p class="date">October 2024 - September 2025</p>
+                <ul>
+                    <li>Assisting with official dues and administrative tasks</li>
+                    <li>Maintaining computers and other hardware systems</li>
+                    <li>Providing technical support to staff members</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company-icon">💼</div>
+                    <div>
+                        <h3>IT Intern</h3>
+                        <p class="company">A.O KRANCO LIMITED Ghana</p>
+                    </div>
+                </div>
+                <p class="date">June 2022 - August 2022</p>
+                <ul>
+                    <li>Working on faulty computers and troubleshooting hardware issues</li>
+                    <li>Assist with printing documents and office equipment</li>
+                    <li>System and software installation and configuration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-content">
+            <p>Want to work together? Feel free to reach out to me. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <a href="mailto:seyhram@gmail.com">seyhram@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <a href="tel:+233271759470">+233 27 175 9470 / +233 55 569 0609</a>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Tema, Ghana</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/susan-darke-6b6371248?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" title="LinkedIn"><img src="Images/linkedin-icon-3.svg" alt="GitHub" style="width:40px; height:40px;"></a>
+                <a href="https://www.linkedin.com/in/susan-darke-6b6371248?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" title="GitHub"><img src="Images/git.webp" alt="GitHub" style="width:40px; height:40px;"></a>
+                <a href="https://https://www.instagram.com/suu_sieee?igsh=a2k5dGg5MDVvcThv" title="Instagram"><img src="Images/instagram-vector-logo-icon-social-media-logotype_901408-392.avif" alt="GitHub" style="width:40px; height:40px;"></a>
+                <!--<a href="#" title="GitHub">🐱</a>
+                <a href="#" title="Twitter">🐦</a>-->
+                <a href="mailto:seyhram@gmail.com" title="Email">✉️</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Susan Seyram Darke. All rights reserved.</p>
+        <p>Built with ❤️ and lots of ☕</p>
+    </footer>
+</body>
+</html>
